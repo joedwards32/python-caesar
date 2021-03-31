@@ -7,6 +7,12 @@ import os
 import argparse
 
 class TestCaesar(unittest.TestCase):
+    def test_main(self):
+        # Very limited test of main function
+        self.assertEqual(caesar.main(['-m', 'encrypt', '-s', '1']), 0)
+        self.assertEqual(caesar.main(['-m', 'decrypt', '-s', '1']), 0)
+        self.assertEqual(caesar.main(['-m', 'force']), 0)
+
     def test__args(self):
         args = caesar._args(['-m', 'encrypt', '-s', '1'])
         self.assertEqual(args.mode, 'encrypt')
@@ -61,6 +67,10 @@ It needs to be a certain length for an good guess to be made."""
     def test__probably_english_false(self):
         string = """Dies ist ein Test der wahrscheinlich englischen Funktion.
 Es muss eine bestimmte Länge haben, damit eine gute Vermutung angestellt werden kann."""
+        self.assertEqual(caesar._probably_english(string), False)
+
+    def test__probably_english_false_short(self):
+        string = """{x  #3+#& w"""
         self.assertEqual(caesar._probably_english(string), False)
 
     def test_brute_force_caesar(self):

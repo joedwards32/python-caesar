@@ -85,8 +85,11 @@ def _probably_english(plain_text):
     words = _load_word_list()
 
     for plain_word in plain_words:
-        if plain_word.strip(punctuation) in words:
-            english_words += 1
+        for word in words:
+            clean_plain_word = plain_word.strip(punctuation).lower()
+            clean_word = word.lower()
+            if len(clean_plain_word) > 1 and clean_plain_word == clean_word:
+                english_words += 1
     probability_english = english_words / total_words
     # If at least 60% of the words are in our dictionary then this is probably plain english
     if probability_english < 0.6:
