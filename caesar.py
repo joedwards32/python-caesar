@@ -163,9 +163,6 @@ def main(argv):
         output = caesar_shift(input,(shift - ( shift * 2 )))
     elif mode == 'force':
         output = brute_force_caesar(input)
-    else:
-        print("Mode should never be " + str(mode), file=sys.stderr)
-        return 1
 
     # Write output
     if args.output_file is sys.stdout:
