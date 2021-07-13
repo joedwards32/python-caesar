@@ -79,7 +79,7 @@ def _analyse_character_frequency(cipher_text):
 def _probably_english(plain_text):
     """Private function to ascertain if the supplied plain text is likely to be valid english or not"""
     punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' + "\n"
-    plain_words = plain_text.split(" ")
+    plain_words = list(dict.fromkeys(plain_text.split(" ")))
     total_words = float(len(plain_words))
     english_words = float(0)
     words = _load_word_list()
@@ -131,7 +131,7 @@ def _args(argv):
     parser.add_argument('-m', '--mode', nargs='?', choices=('encrypt', 'decrypt', 'force'), default="encrypt", help="Encrypt, decrypt or brute force input text.")
     parser.add_argument('-i', '--input-file', type=argparse.FileType('r'), default=(None if sys.stdin.isatty() else sys.stdin), help="Input file, defaults to stdin" )
     parser.add_argument('-o', '--output-file', type=argparse.FileType('w'), default=sys.stdout, help="Output file, defaults to stdout")
-    parser.add_argument('-s', '--shift', type=check_shift, default=random.randint(1,93), help='Caesar shift value')
+    parser.add_argument('-s', '--shift', type=check_shift, default=random.randint(1,93), help='Caesar shift value, defaults to a random number between 1 and 93')
     return parser.parse_args(argv)
 
 ### Main
