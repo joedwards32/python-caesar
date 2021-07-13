@@ -63,7 +63,7 @@ Known limitations/opportunities for improvement:
 
 ## Testing
 
-Python Unittest and Coverage care used to support unit testing.
+Python Unittest and Coverage are used to support unit testing.
 
 To run tests:
 
