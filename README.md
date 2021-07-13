@@ -59,7 +59,7 @@ Files are also supported as input/output:
 
 Known limitations/opportunities for improvement:
 
-* Brute forcing of large inputs is currently very inefficient. Caesar ciphers can be trivially broken with only a few lines of input. Using a generator function to itterate over an increasing amount of input until the cipher is solved would be better.
+* Brute forcing of large inputs is currently very inefficient. Caesar ciphers can be trivially broken with only a single line of input. Using a generator function to itterate over an increasing amount of input until the cipher is solved would be better.
 
 ## Testing
 
